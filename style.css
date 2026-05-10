@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Condensed', 'Courier New', monospace;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    
+    /* ========== ВАШЕ ФОТО ========== */
+    background-image: url('army-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    /* Убираем зелёный цвет, оставляем только фото */
+    background-color: transparent;
+}
+
+/* ТОЛЬКО затемнение для читаемости текста (без зелени) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ====== ФЛАГ РОССИИ (БОЛЬШОЙ) ====== */
+.flags-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.flag-rf {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    border: 2px solid #e2bb5e;
+}
+
+.rf-stripe {
+    flex: 1;
+    width: 100%;
+}
+.white { background: #ffffff; }
+.blue { background: #0039a6; }
+.red { background: #d52b1e; }
+
+/* ====== НАДПИСЬ (НОВАЯ) ====== */
+.from-who {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #f5e7c8;
+    background: #1e2a1acc;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 20px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    border-left: 3px solid #e2bb5e;
+    border-right: 3px solid #e2bb5e;
+    font-family: 'Roboto Condensed', monospace;
+    text-shadow: 1px 1px 0 #1a2a1a;
+}
+
+/* ====== ШЕВРОН ====== */
+.chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0 8px;
+    flex-wrap: wrap;
+}
+
+.ribbon-left, .ribbon-right {
+    width: 100px;
+    height: 30px;
+    background: repeating-linear-gradient(45deg, #f0d050, #f0d050 10px, #daa520 10px, #daa520 20px);
+    clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+.ribbon-right {
+    transform: scaleX(-1);
+}
+
+.chevron-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e6ddb3;
+    text-shadow: 2px 2px 0 #2d4227;
+    letter-spacing: 3px;
+    background: #1e2a1acc;
+    backdrop-filter: blur(4px);
+    padding: 6px 28px;
+    border-radius: 40px;
+    border: 1px solid #c5a03a;
+}
+
+/* ====== ОБРАТНЫЙ ОТСЧЁТ ====== */
+.countdown-block {
+    background: #0f1a0ebb;
+    backdrop-filter: blur(8px);
+    border-radius: 60px;
+    padding: 15px 30px;
+    margin: 20px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    border: 1px solid #efcd7b;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.star-left, .star-right {
+    font-size: 2rem;
+    color: #f3cf7a;
+    text-shadow: 0 0 5px red;
+}
+
+.countdown-inner {
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #e6d5a8;
+    border-bottom: 1px dashed #e2bb5e;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.days-counter {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#daysLeft {
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: 'Playfair Display', monospace;
+    background: #000000aa;
+    padding: 0 20px;
+    border-radius: 30px;
+    color: #ffd966;
+    text-shadow: 0 0 8px #ff8c00;
+    letter-spacing: 6px;
+}
+
+.days-unit {
+    font-size: 1.6rem;
+    color: #cbbd7a;
+    font-weight: bold;
+}
+
+/* ====== СЕТКА КАРТОЧЕК ====== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 15px 0 40px;
+}
+
+.wish-card {
+    background: #172512dd;
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: 1px solid #5f7a47;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.5);
+}
+
+.wish-card:hover {
+    transform: translateY(-6px);
+    border-color: #e2bb5e;
+    box-shadow: 0 14px 22px black;
+}
+
+.card-header {
+    background: #273d1fcc;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #f5e1a0;
+    border-bottom: 2px solid #6f924b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.unlocked .card-header::after {
+    content: "✓";
+    color: #adff2f;
+    font-weight: bold;
+}
+
+.wish-content {
+    padding: 22px 14px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: #f0ebc8;
+    background: #1f3318cc;
+    font-weight: 400;
+}
+
+/* Заблокированные */
+.locked .wish-content {
+    background: #132010cc;
+    color: #798f66;
+    flex-direction: column;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.locked .wish-content::before {
+    content: "🚬 СИГАРЕТЫ НЕ ВЫКУРЕНА 🚬";
+    font-size: 0.75rem;
+    background: #2c2e1e;
+    padding: 4px 12px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.locked .wish-content::after {
+    content: "🔒🚬🔒";
+    font-size: 1.5rem;
+    display: block;
+    opacity: 0.8;
+}
+
+.unlocked .wish-content {
+    background: #2a4520cc;
+    border-top: 1px solid #9bba6e;
+}
+
+/* ====== ФУТЕР ====== */
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid #5f7a47;
+    padding-top: 20px;
+}
+
+.footer-stars {
+    color: #b6aa6a;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+/* Адаптация */
+@media (max-width: 700px) {
+    .flag-rf { width: 250px; height: 70px; }
+    .from-who { font-size: 0.9rem; padding: 6px 16px; }
+    .chevron-text { font-size: 0.9rem; padding: 4px 15px; }
+    #daysLeft { font-size: 3rem; letter-spacing: 2px; }
+    .grid { gap: 12px; }
+    .ribbon-left, .ribbon-right { width: 50px; }
+    .locked .wish-content::before { white-space: normal; font-size: 0.65rem; }
+}
